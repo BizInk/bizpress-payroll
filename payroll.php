@@ -5,6 +5,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+//require "payroll-email.php";
 
 function payroll_settings_fields( $fields, $section ) {
 
@@ -91,7 +92,7 @@ add_filter( 'cx-settings-fields', 'payroll_settings_fields', 10, 2 );
 function payroll_content( $types ) {
 	$types[] = [
 		'key' 	=> 'payroll_content_page',
-		'type'	=> 'payroll-content'
+		'type'	=> 'payroll'
 	];
 	$types[] = [
 		'key' 	=> 'payroll_glossary_page',
