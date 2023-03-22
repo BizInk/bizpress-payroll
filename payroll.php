@@ -123,18 +123,18 @@ function bizink_payroll_init(){
 	$post = bizink_get_payroll_page_object();
 	if( is_object( $post ) && get_post_type( $post ) == "page" ){
 		add_rewrite_tag('%'.$post->post_name.'%', '([^&]+)', 'bizpress=');
-		add_rewrite_rule('^'.$post->post_name . '/([^/]+)/?$','index.php?pagename=' . $post->post_name . '&bizpress=$matches[1]','top');
-		add_rewrite_rule("^".$post->post_name."/([a-z0-9-]+)[/]?$",'index.php?pagename='.$post->post_name.'&bizpress=$matches[1]','top');
-		add_rewrite_rule("^".$post->post_name."/topic/([a-z0-9-]+)[/]?$",'index.php?pagename='.$post->post_name.'&topic=$matches[1]','top');
-		add_rewrite_rule("^".$post->post_name."/type/([a-z0-9-]+)[/]?$" ,'index.php?pagename='.$post->post_name.'&type=$matches[1]','top');
+		add_rewrite_rule('^'.$post->post_name . '/([^/]+)/?$','index.php?pagename=payroll-resources&bizpress=$matches[1]','top');
+		add_rewrite_rule("^".$post->post_name."/([a-z0-9-]+)[/]?$",'index.php?pagename=payroll-resources&bizpress=$matches[1]','top');
+		add_rewrite_rule("^".$post->post_name."/topic/([a-z0-9-]+)[/]?$",'index.php?pagename=payroll-resources&topic=$matches[1]','top');
+		add_rewrite_rule("^".$post->post_name."/type/([a-z0-9-]+)[/]?$" ,'index.php?pagename=payroll-resources&type=$matches[1]','top');
 		//flush_rewrite_rules();
 	}
 
 	$post = bizink_get_payroll_page_glossary();
 	if( is_object( $post ) && get_post_type( $post ) == "page" ){
 		add_rewrite_tag('%'.$post->post_name.'%', '([^&]+)', 'bizpress=');
-		add_rewrite_rule('^'.$post->post_name . '/([^/]+)/?$','index.php?pagename=' . $post->post_name . '&bizpress=$matches[1]','top');
-		add_rewrite_rule("^".$post->post_name."/([a-z0-9-]+)[/]?$",'index.php?pagename='.$post->post_name.'&bizpress=$matches[1]','top');
+		add_rewrite_rule('^'.$post->post_name . '/([^/]+)/?$','index.php?pagename=payroll-glossary&bizpress=$matches[1]','top');
+		add_rewrite_rule("^".$post->post_name."/([a-z0-9-]+)[/]?$",'index.php?pagename=payroll-glossary&bizpress=$matches[1]','top');
 		//flush_rewrite_rules();
 	}
 }
