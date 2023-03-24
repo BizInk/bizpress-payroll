@@ -6,6 +6,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 //require "payroll-email.php";
+add_filter( 'display_post_states', 'bizpress_payroll_post_states', 10, 2 );
+function bizpress_payroll_post_states( $post_states, $post ) {
+	$payrollResourcesPageID = intval(cxbc_get_option( 'bizink-client_basic', 'payroll_content_page' ));
+    if ( $payrollResourcesPageID == $post->ID ) {
+        $post_states['bizpress_payrollresources'] = __('BizPress Payroll Resources','bizink-client');
+    }
+
+	$payrollGlossaryPageID = intval(cxbc_get_option( 'bizink-client_basic', 'payroll_glossary_page' ));
+    if ( $payrollGlossaryPageID == $post->ID ) {
+        $post_states['bizpress_payrollglossary'] = __('BizPress Payroll Glossary','bizink-client');
+    }
+    return $post_states;
+}
 
 function payroll_settings_fields( $fields, $section ) {
 
@@ -14,7 +27,7 @@ function payroll_settings_fields( $fields, $section ) {
 	if('bizink-client_basic' == $section['id']){
 		$fields['payroll_content_page'] = array(
 			'id'      => 'payroll_content_page',
-			'label'     => __( 'Bizpress Payroll Resources', 'bizink-client' ),
+			'label'     => __( 'Payroll Resources', 'bizink-client' ),
 			'type'      => 'select',
 			'desc'      => __( 'Select the page to show the content. This page must contain the <code>[bizpress-content]</code> shortcode.', 'bizink-client' ),
 			'options'	=> cxbc_get_posts( [ 'post_type' => 'page' ] ),
@@ -29,7 +42,7 @@ function payroll_settings_fields( $fields, $section ) {
 
 		$fields['payroll_glossary_page'] = array(
 			'id'      => 'payroll_glossary_page',
-			'label'     => __( 'Bizpress Payroll Glossary', 'bizink-client' ),
+			'label'     => __( 'Payroll Glossary', 'bizink-client' ),
 			'type'      => 'select',
 			'desc'      => __( 'Select the page to show the content. This page must contain the <code>[bizpress-content]</code> shortcode.', 'bizink-client' ),
 			'options'	=> cxbc_get_posts( [ 'post_type' => 'page' ] ),
