@@ -21,14 +21,20 @@ function bizpress_payroll_post_states( $post_states, $post ) {
 }
 
 function payroll_settings_fields( $fields, $section ) {
-
-	//if ( 'bizink-client_basic' != $section['id'] ) return $fields;
+	$pageselect = false;
+	if(defined('CXBPC')){
+		$bizpress = get_plugin_data( CXBPC );
+		$v = intval(str_replace('.','',$bizpress['Version']));
+		if($v >= 151){
+			$pageselect = true;
+		}
+	}
 	
 	if('bizink-client_basic' == $section['id']){
 		$fields['payroll_content_page'] = array(
 			'id'      => 'payroll_content_page',
 			'label'     => __( 'Payroll Resources', 'bizink-client' ),
-			'type'      => 'select',
+			'type'      => $pageselect ? 'pageselect':'select',
 			'desc'      => __( 'Select the page to show the content. This page must contain the <code>[bizpress-content]</code> shortcode.', 'bizink-client' ),
 			'options'	=> cxbc_get_posts( [ 'post_type' => 'page' ] ),
 			'default_page' => [
@@ -43,7 +49,7 @@ function payroll_settings_fields( $fields, $section ) {
 		$fields['payroll_glossary_page'] = array(
 			'id'      => 'payroll_glossary_page',
 			'label'     => __( 'Payroll Glossary', 'bizink-client' ),
-			'type'      => 'select',
+			'type'      => $pageselect ? 'pageselect':'select',
 			'desc'      => __( 'Select the page to show the content. This page must contain the <code>[bizpress-content]</code> shortcode.', 'bizink-client' ),
 			'options'	=> cxbc_get_posts( [ 'post_type' => 'page' ] ),
 			'default_page' => [

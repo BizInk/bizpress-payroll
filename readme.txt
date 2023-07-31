@@ -2,10 +2,9 @@
 Contributors: Bizink,Jayden Major
 Tags: Bizink, Bizpress, Payroll content, marketing, Payroll
 Requires at least: 5.6
-Tested up to: 6.1.1
-Stable tag: 1.2
-Version: 1.2
-Requires PHP: 7.2
+Tested up to: 6.2.2
+Stable tag: 1.2.2
+Requires PHP: 7.4
 
 Display Payroll content on your website that is automatically updated by the Bizink team.
 
@@ -22,6 +21,12 @@ Display Payroll content on your website that is automatically updated by the Biz
 - Bizpress Payroll
 
 == Changelog ==
+
+= 1.2.2 =
+* Added Page Select Support
+
+= 1.2.1 =
+* XML Sitemap with Yoast SEO
 
 = 1.2 =
 * Post Status Update
