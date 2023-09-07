@@ -47,7 +47,7 @@ function bizpress_get_payroll_content(){
     }
     else{
         $args = array(
-            'timeout' => 120,
+            'timeout' => 10,
 		    'httpversion' => '1.1',
             'headers' => array(
                 'Content-Type' => 'application/json',
